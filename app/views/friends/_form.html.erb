@@ -1,42 +1,36 @@
-<%= form_with(model: friend) do |form| %>
+<%= form_with(model: friend, class: "form-horizontal") do |form| %>
   <% if friend.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h4>
       <ul>
-        <% friend.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% friend.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+  <div class="form-group mb-4">
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First name" %>
   </div>
 
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+  <div class="form-group mb-4">
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last name" %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="form-group mb-4">
+    <%= form.text_field :email, class: "form-control", placeholder: "Email address" %>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class="form-group mb-4">
+    <%= form.text_field :phone, class: "form-control", placeholder: "Phone number" %>
   </div>
 
-  <div>
-    <%= form.label :twitter, style: "display: block" %>
-    <%= form.text_field :twitter %>
+  <div class="form-group mb-4">
+    <%= form.text_field :twitter, class: "form-control", placeholder: "Twitter handle" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group mb-4">
+    <%= form.submit "Save", class: "btn btn-secondary" %>
   </div>
 <% end %>
